@@ -1,13 +1,14 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="CreateBlacklistPivoteTable" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_BlackList" Type="InArgument(x:String)" />
     <x:Property Name="out_PivotTable" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="out_CpsColumnName" Type="OutArgument(x:String)" />
+    <x:Property Name="in_BlackListFileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>712,2645</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>939,2645</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CreateBlacklistPivoteTable_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -76,8 +77,8 @@
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="CreateBlacklistPivoteTable" sap:VirtualizedContainerService.HintSize="680,2580" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -91,7 +92,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope- Blacklist" sap:VirtualizedContainerService.HintSize="638,2488" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[&quot;Data\Temp\&quot;+in_BlackList]">
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope- Blacklist" sap:VirtualizedContainerService.HintSize="638,2488" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[&quot;Data\Temp\&quot;+in_BlackListFileName]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
@@ -105,7 +106,7 @@
             </sap:WorkflowViewStateService.ViewState>
             <ui:ExcelGetWorkbookSheet DisplayName="Get Workbook Sheet" sap:VirtualizedContainerService.HintSize="562,79" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheet_1" Index="0" Sheet="[blacklistSheetName]" />
             <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="562,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[blacklistSheetName]" />
-            <ui:ExcelReadRange Range="{x:Null}" AddHeaders="True" DataTable="[blacklistDataTable]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="562,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="[blacklistSheetName]" />
+            <ui:ExcelReadRange Range="{x:Null}" AddHeaders="True" DataTable="[blacklistDataTable]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="562,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="[in_Config(&quot;BlacklistSheetName&quot;).ToString]" />
             <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="562,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;blacklist table rows count: &quot;+ blacklistDataTable.Rows.Count.ToString]" />
             <ui:ForEach x:TypeArguments="sd:DataColumn" CurrentIndex="{x:Null}" DisplayName="For Each- columns" sap:VirtualizedContainerService.HintSize="562,684" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[blacklistDataTable.Columns]">
               <ui:ForEach.Body>

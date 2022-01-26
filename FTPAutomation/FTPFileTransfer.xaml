@@ -2,19 +2,16 @@
   <x:Members>
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_BlackListFileName" Type="InArgument(x:String)" />
-    <x:Property Name="in_InputConsolidateFileName" Type="InArgument(x:String)" />
-    <x:Property Name="in_VIPBDFileName" Type="InArgument(x:String)" />
-    <x:Property Name="in_McBDFileName" Type="InArgument(x:String)" />
-    <x:Property Name="in_TradBDFileName" Type="InArgument(x:String)" />
-    <x:Property Name="in_ATMBDFileName" Type="InArgument(x:String)" />
+    <x:Property Name="in_NoEnvFileNamePathDictionary" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_NoEnvFileNameList" Type="InArgument(scg:List(x:String))" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>712,1573</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>939,1969</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>FTPConnect_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="31">
+    <scg:List x:TypeArguments="x:String" Capacity="62">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -46,6 +43,8 @@
       <x:String>System.Xml.Serialization</x:String>
       <x:String>System.Security</x:String>
       <x:String>System.Net</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -86,7 +85,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="FTP File Transfer" sap:VirtualizedContainerService.HintSize="476,1508" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="FTP File Transfer" sap:VirtualizedContainerService.HintSize="614,1904" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:FtpSessionGen" Name="FTPSession" />
       <Variable x:TypeArguments="x:String" Name="host" />
@@ -99,7 +98,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,51" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;File transfering to FTP server from local&quot;]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="572,51" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;File transfering to FTP server from local&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -107,7 +106,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,51" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="572,51" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -151,15 +150,15 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <ui:OpenFTPSession KeyFiles="{x:Null}" DisplayName="Open FTP session" FTPSession="[FTPSession]" sap:VirtualizedContainerService.HintSize="434,1012" Host="[host]" sap2010:WorkflowViewState.IdRef="OpenFTPSession_1" Password="[new System.Net.NetworkCredential(string.Empty, pass).Password]" Port="[port]" SecureFTP="False" Username="[user]">
+    <ui:OpenFTPSession KeyFiles="{x:Null}" DisplayName="Open FTP session" FTPSession="[FTPSession]" sap:VirtualizedContainerService.HintSize="572,1408" Host="[host]" sap2010:WorkflowViewState.IdRef="OpenFTPSession_1" Password="[new System.Net.NetworkCredential(string.Empty, pass).Password]" Port="[port]" SecureFTP="False" Username="[user]">
       <ui:OpenFTPSession.Body>
-        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="326,903" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="538,1299" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="284,51" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;FTP connected&quot;]">
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="496,51" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;FTP connected&quot;]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -167,120 +166,103 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <Sequence sap:VirtualizedContainerService.HintSize="284,720" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence sap:VirtualizedContainerService.HintSize="496,1116" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Sequence DisplayName="Sequence- upload input file" sap:VirtualizedContainerService.HintSize="242,66" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <ParallelForEach x:TypeArguments="x:String" DisplayName="Parallel For Each in Correos Temp" sap:VirtualizedContainerService.HintSize="454,51" sap2010:WorkflowViewState.IdRef="ParallelForEach`1_1" Values="[Directory.GetFiles( Directory.GetCurrentDirectory+&quot;\Data\Temp&quot;)]">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="CommentOut_4">
-                <ui:CommentOut.Body>
-                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,143" sap2010:WorkflowViewState.IdRef="Sequence_11">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <ui:RemoveFile Host="{x:Null}" KeyFiles="{x:Null}" Password="{x:Null}" Port="{x:Null}" Username="{x:Null}" DisplayName="Remove previous inputfile" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="RemoveFile_1" RemotePath="[in_Config(&quot;InputnonPartnerFilePath&quot;).ToString+&quot;/&quot;+in_InputConsolidateFileName]" SecureFTP="False">
+              <ActivityAction x:TypeArguments="x:String">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:String" Name="correosFile" />
+                </ActivityAction.Argument>
+                <If Condition="[correosFile.ToLower.Contains(&quot;correos&quot;)]" DisplayName="If file name contain Correos" sap:VirtualizedContainerService.HintSize="484,291" sap2010:WorkflowViewState.IdRef="If_1">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If.Then>
+                    <ui:Upload Host="{x:Null}" KeyFiles="{x:Null}" NotUploadedFiles="{x:Null}" Password="{x:Null}" Port="{x:Null}" UploadedFiles="{x:Null}" Username="{x:Null}" DisplayName="Upload- Corrreos" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="Upload_9" LocalPath="[correosFile]" RemotePath="[in_Config(&quot;CorreosfilesPath&quot;).ToString]" SecureFTP="True">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                    </ui:RemoveFile>
-                  </Sequence>
-                </ui:CommentOut.Body>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:CommentOut>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;uploading input file&quot;]">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:LogMessage>
-              <ui:Upload Host="{x:Null}" KeyFiles="{x:Null}" NotUploadedFiles="{x:Null}" Password="{x:Null}" Port="{x:Null}" UploadedFiles="{x:Null}" Username="{x:Null}" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="Upload_1" LocalPath="[&quot;Data\Input\&quot;+in_InputConsolidateFileName]" RemotePath="[in_Config(&quot;ConsolidateInputFilePath&quot;).ToString]" SecureFTP="True">
+                    </ui:Upload>
+                  </If.Then>
+                </If>
+              </ActivityAction>
+            </ParallelForEach>
+            <Sequence DisplayName="Sequence- upload NoEnv" sap:VirtualizedContainerService.HintSize="454,559" sap2010:WorkflowViewState.IdRef="Sequence_7">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each- correos file" sap:VirtualizedContainerService.HintSize="412,467" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[in_NoEnvFileNameList]">
+                <ui:ForEach.Body>
+                  <ActivityAction x:TypeArguments="x:String">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="x:String" Name="NoEnvFile" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,334" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:RemoveFile Host="{x:Null}" KeyFiles="{x:Null}" Password="{x:Null}" Port="{x:Null}" Username="{x:Null}" DisplayName="Remove previous blacklistfile" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="RemoveFile_3" RemotePath="[in_NoEnvFileNamePathDictionary( NoEnvFile).ToString+&quot;/&quot;+NoEnvFile]" SecureFTP="False">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:RemoveFile>
+                      <ui:Upload Host="{x:Null}" KeyFiles="{x:Null}" NotUploadedFiles="{x:Null}" Password="{x:Null}" Port="{x:Null}" UploadedFiles="{x:Null}" Username="{x:Null}" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="Upload_1" LocalPath="[&quot;Data\Temp\&quot;+NoEnvFile]" RemotePath="[in_NoEnvFileNamePathDictionary( NoEnvFile).ToString]" SecureFTP="True">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:Upload>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:ForEach.Body>
+              </ui:ForEach>
+            </Sequence>
+            <Sequence DisplayName="Blacklist upload Sequence" sap:VirtualizedContainerService.HintSize="454,334" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:RemoveFile Host="{x:Null}" KeyFiles="{x:Null}" Password="{x:Null}" Port="{x:Null}" Username="{x:Null}" DisplayName="Remove previous blacklistfile" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="RemoveFile_2" RemotePath="[in_Config(&quot;BlacklistFilePath&quot;).ToString+&quot;/&quot;+in_BlackListFileName]" SecureFTP="False">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-              </ui:Upload>
-            </Sequence>
-            <Sequence DisplayName="Upload BD files Sequence" sap:VirtualizedContainerService.HintSize="242,416" sap2010:WorkflowViewState.IdRef="Sequence_6">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <ui:Upload Host="{x:Null}" KeyFiles="{x:Null}" NotUploadedFiles="{x:Null}" Password="{x:Null}" Port="{x:Null}" UploadedFiles="{x:Null}" Username="{x:Null}" DisplayName="Upload- BDTrad" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Upload_3" LocalPath="[&quot;Data\Temp\&quot;+in_TradBDFileName]" RemotePath="[in_Config(&quot;BDTradfilePath&quot;).ToString]" SecureFTP="True">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:Upload>
-              <ui:Upload Host="{x:Null}" KeyFiles="{x:Null}" NotUploadedFiles="{x:Null}" Password="{x:Null}" Port="{x:Null}" UploadedFiles="{x:Null}" Username="{x:Null}" DisplayName="Upload- BDVIP" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Upload_6" LocalPath="[&quot;Data\Temp\&quot;+in_VIPBDFileName]" RemotePath="[in_Config(&quot;BDVIPfilePath&quot;).ToString]" SecureFTP="True">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:Upload>
-              <ui:Upload Host="{x:Null}" KeyFiles="{x:Null}" NotUploadedFiles="{x:Null}" Password="{x:Null}" Port="{x:Null}" UploadedFiles="{x:Null}" Username="{x:Null}" DisplayName="Upload- BD MC file" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Upload_7" LocalPath="[&quot;Data\Temp\&quot;+in_McBDFileName]" RemotePath="[in_Config(&quot;BDMcfilePath&quot;).ToString]" SecureFTP="True">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:Upload>
-              <ui:Upload Host="{x:Null}" KeyFiles="{x:Null}" NotUploadedFiles="{x:Null}" Password="{x:Null}" Port="{x:Null}" UploadedFiles="{x:Null}" Username="{x:Null}" DisplayName="Upload- BD ATM" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Upload_8" LocalPath="[&quot;Data\Temp\&quot;+ in_ATMBDFileName]" RemotePath="[in_Config(&quot;BDATMfilePath&quot;).ToString]" SecureFTP="True">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:Upload>
-            </Sequence>
-            <Sequence DisplayName="Blacklist upload Sequence" sap:VirtualizedContainerService.HintSize="242,66" sap2010:WorkflowViewState.IdRef="Sequence_5">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <ui:RemoveFile Host="{x:Null}" KeyFiles="{x:Null}" Password="{x:Null}" Port="{x:Null}" Username="{x:Null}" DisplayName="Remove previous blacklistfile" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="RemoveFile_2" RemotePath="[in_Config(&quot;BlackListTrackingPath&quot;).ToString+&quot;/&quot;+in_InputConsolidateFileName]" SecureFTP="False">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
               </ui:RemoveFile>
-              <ui:Upload Host="{x:Null}" KeyFiles="{x:Null}" NotUploadedFiles="{x:Null}" Password="{x:Null}" Port="{x:Null}" UploadedFiles="{x:Null}" Username="{x:Null}" DisplayName="Upload Blacklist file" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Upload_2" LocalPath="[&quot;Data\Temp\&quot;+in_BlackListFileName]" RemotePath="[in_Config(&quot;BlackListTrackingPath&quot;).ToString]" SecureFTP="True">
+              <ui:Upload Host="{x:Null}" KeyFiles="{x:Null}" NotUploadedFiles="{x:Null}" Password="{x:Null}" Port="{x:Null}" UploadedFiles="{x:Null}" Username="{x:Null}" DisplayName="Upload Blacklist file" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="Upload_2" LocalPath="[&quot;Data\Temp\&quot;+in_BlackListFileName]" RemotePath="[in_Config(&quot;BlacklistFilePath&quot;).ToString]" SecureFTP="True">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -296,7 +278,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:OpenFTPSession>
-    <ui:FTPDisconnect DisplayName="FTP disconnect" FTPSession="[FTPSession]" sap:VirtualizedContainerService.HintSize="434,51" sap2010:WorkflowViewState.IdRef="FTPDisconnect_1">
+    <ui:FTPDisconnect DisplayName="FTP disconnect" FTPSession="[FTPSession]" sap:VirtualizedContainerService.HintSize="572,51" sap2010:WorkflowViewState.IdRef="FTPDisconnect_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -304,6 +286,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:FTPDisconnect>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;File transfer done.&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="572,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;File transfer done.&quot;]" />
   </Sequence>
 </Activity>

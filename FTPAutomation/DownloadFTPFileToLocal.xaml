@@ -4,11 +4,12 @@
     <x:Property Name="out_BlackListFileName" Type="OutArgument(x:String)" />
     <x:Property Name="out_NoEnvFileNameList" Type="OutArgument(scg:List(x:String))" />
     <x:Property Name="out_CorreosFileNameList" Type="OutArgument(scg:List(x:String))" />
+    <x:Property Name="out_NoEnvFileNamePathDictionary" Type="OutArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>830,2630</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>939,1009</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DownloadFTPFileToLocal_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -80,7 +81,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DownloadFTPFileToLocal" sap:VirtualizedContainerService.HintSize="840,2565" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DownloadFTPFileToLocal" sap:VirtualizedContainerService.HintSize="476,944" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:FtpSessionGen" Name="FTPSession" />
       <Variable x:TypeArguments="s:String[]" Name="NoEnvFilePathArray" />
@@ -90,7 +91,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="798,51" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Deleting files in temp folder&quot;]">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,51" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Deleting files in temp folder&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -98,7 +99,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each file in temp" sap:VirtualizedContainerService.HintSize="798,51" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[directory.GetFiles(&quot;Data\Temp\&quot;,&quot;*.csv&quot;)]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each file in temp" sap:VirtualizedContainerService.HintSize="434,51" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[directory.GetFiles(&quot;Data\Temp\&quot;,&quot;*.csv&quot;)]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
@@ -121,7 +122,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEach>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each file in temp" sap:VirtualizedContainerService.HintSize="798,51" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[directory.GetFiles(&quot;Data\Temp\&quot;,&quot;*.xlsx&quot;)]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each file in temp" sap:VirtualizedContainerService.HintSize="434,51" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[directory.GetFiles(&quot;Data\Temp\&quot;,&quot;*.xlsx&quot;)]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
@@ -144,25 +145,34 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEach>
-    <ui:OpenFTPSession KeyFiles="{x:Null}" DisplayName="Open FTP session" FTPSession="[FTPSession]" sap:VirtualizedContainerService.HintSize="798,2200" Host="[in_Config(&quot;FTPserver&quot;).ToString]" sap2010:WorkflowViewState.IdRef="OpenFTPSession_1" Password="[in_Config(&quot;FTPPass&quot;).ToString]" Port="[convert.ToInt32(in_Config(&quot;FTPport&quot;).ToString)]" SecureFTP="False" Username="[in_Config(&quot;FTPUser&quot;).ToString]">
+    <ui:OpenFTPSession KeyFiles="{x:Null}" DisplayName="Open FTP session" FTPSession="[FTPSession]" sap:VirtualizedContainerService.HintSize="434,579" Host="[in_Config(&quot;FTPserver&quot;).ToString]" sap2010:WorkflowViewState.IdRef="OpenFTPSession_1" Password="[in_Config(&quot;FTPPass&quot;).ToString]" Port="[convert.ToInt32(in_Config(&quot;FTPport&quot;).ToString)]" SecureFTP="False" Username="[in_Config(&quot;FTPUser&quot;).ToString]">
       <ui:OpenFTPSession.Body>
-        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="764,2091" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="304,470" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <Sequence.Variables>
             <Variable x:TypeArguments="sd:DataTable" Name="filesDT" />
           </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="Sequence- No Env" sap:VirtualizedContainerService.HintSize="722,1787" sap2010:WorkflowViewState.IdRef="Sequence_103">
+          <Assign DisplayName="Assign- out_NoEnv file name" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_22">
+            <Assign.To>
+              <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[out_NoEnvFileNamePathDictionary]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[new Dictionary(of string, Object)]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Sequence DisplayName="Sequence- No Env" sap:VirtualizedContainerService.HintSize="262,66" sap2010:WorkflowViewState.IdRef="Sequence_103">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign DisplayName="Assign- NoEnvFilePathArray" sap:VirtualizedContainerService.HintSize="680,60" sap2010:WorkflowViewState.IdRef="Assign_18">
+            <Assign DisplayName="Assign- NoEnvFilePathArray" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_18">
               <Assign.To>
                 <OutArgument x:TypeArguments="s:String[]">[NoEnvFilePathArray]</OutArgument>
               </Assign.To>
@@ -170,7 +180,7 @@
                 <InArgument x:TypeArguments="s:String[]">[Split( in_Config("NoEnvFilePathArray").ToString,",")]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign DisplayName="Assign- NoEnvFilePathList intialize" sap:VirtualizedContainerService.HintSize="680,60" sap2010:WorkflowViewState.IdRef="Assign_20">
+            <Assign DisplayName="Assign- NoEnvFilePathList intialize" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_20">
               <Assign.To>
                 <OutArgument x:TypeArguments="scg:List(x:String)">[out_NoEnvFileNameList]</OutArgument>
               </Assign.To>
@@ -178,26 +188,26 @@
                 <InArgument x:TypeArguments="scg:List(x:String)">[new List(of String)]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each- NoEnv FilePath" sap:VirtualizedContainerService.HintSize="680,1495" sap2010:WorkflowViewState.IdRef="ForEach`1_8" Values="[NoEnvFilePathArray]">
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each- NoEnv FilePath" sap:VirtualizedContainerService.HintSize="262,51" sap2010:WorkflowViewState.IdRef="ForEach`1_8" Values="[NoEnvFilePathArray]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="x:String">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:String" Name="NoEnvFilePath" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="644,1362" sap2010:WorkflowViewState.IdRef="Sequence_102">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="284,326" sap2010:WorkflowViewState.IdRef="Sequence_102">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Sequence DisplayName="Correosfiles download" sap:VirtualizedContainerService.HintSize="602,1270" sap2010:WorkflowViewState.IdRef="Sequence_91">
+                    <Sequence DisplayName="Correosfiles download" sap:VirtualizedContainerService.HintSize="242,234" sap2010:WorkflowViewState.IdRef="Sequence_91">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:RetryScope DisplayName="NonPartner-Retry Scope input file" sap:VirtualizedContainerService.HintSize="560,353" sap2010:WorkflowViewState.IdRef="RetryScope_26" NumberOfRetries="3" RetryInterval="00:00:03">
+                      <ui:RetryScope DisplayName="Retry download NoEnv path" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="RetryScope_26" NumberOfRetries="3" RetryInterval="00:00:03">
                         <ui:RetryScope.ActivityBody>
                           <ActivityAction>
                             <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="376,179" sap2010:WorkflowViewState.IdRef="Sequence_86">
@@ -222,24 +232,24 @@
                         </ui:RetryScope.Condition>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:RetryScope>
-                      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[filesDT]" DisplayName="For Each Row in filesDT" sap:VirtualizedContainerService.HintSize="560,785" sap2010:WorkflowViewState.IdRef="ForEachRow_15">
+                      <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[filesDT]" DisplayName="For Each Row in filesDT" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ForEachRow_15">
                         <ui:ForEachRow.Body>
                           <ActivityAction x:TypeArguments="sd:DataRow">
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="sd:DataRow" Name="fileDTrow" />
                             </ActivityAction.Argument>
-                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,666" sap2010:WorkflowViewState.IdRef="Sequence_90">
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,766" sap2010:WorkflowViewState.IdRef="Sequence_90">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <If Condition="[fileDTrow(&quot;Name&quot;).ToString.ToLower.Contains(&quot;no&quot;) and fileDTrow(&quot;Name&quot;).ToString.ToLower.Contains(&quot;envios&quot;) and (Path.GetExtension(fileDTrow(&quot;Name&quot;).ToString).ToLower.Trim.Contains(&quot;csv&quot;) or Path.GetExtension(fileDTrow(&quot;Name&quot;).ToString).ToLower.Trim.Contains(&quot;xlsx&quot;))]" DisplayName="If fileExist" sap:VirtualizedContainerService.HintSize="484,574" sap2010:WorkflowViewState.IdRef="If_16">
+                              <If Condition="[fileDTrow(&quot;Name&quot;).ToString.ToLower.Contains(&quot;no&quot;) and fileDTrow(&quot;Name&quot;).ToString.ToLower.Contains(&quot;envios&quot;) and (Path.GetExtension(fileDTrow(&quot;Name&quot;).ToString).ToLower.Trim.Contains(&quot;csv&quot;) or Path.GetExtension(fileDTrow(&quot;Name&quot;).ToString).ToLower.Trim.Contains(&quot;xlsx&quot;))]" DisplayName="If fileExist" sap:VirtualizedContainerService.HintSize="484,674" sap2010:WorkflowViewState.IdRef="If_16">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -247,12 +257,20 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                                 <If.Then>
-                                  <Sequence sap:VirtualizedContainerService.HintSize="376,398" sap2010:WorkflowViewState.IdRef="Sequence_89">
+                                  <Sequence sap:VirtualizedContainerService.HintSize="376,498" sap2010:WorkflowViewState.IdRef="Sequence_89">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
+                                    <Assign DisplayName="Assign- assign path to file name" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_23">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:Object">[out_NoEnvFileNamePathDictionary(fileDTrow("Name").ToString.Trim)]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:Object">[NoEnvFilePath]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
                                     <AddToCollection x:TypeArguments="x:String" Collection="[out_NoEnvFileNameList]" DisplayName="Add To Collection- No Env" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_1" Item="[fileDTrow(&quot;Name&quot;).ToString.Trim]" />
                                     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[&quot;Dowloading No Env: &quot;+fileDTrow(&quot;Name&quot;).ToString.Trim]" />
                                     <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="RetryScope_27" NumberOfRetries="3" RetryInterval="00:00:03">
@@ -287,7 +305,7 @@
                         </ui:ForEachRow.Body>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
@@ -298,20 +316,20 @@
               </ui:ForEach.Body>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:ForEach>
           </Sequence>
-          <Sequence DisplayName="Sequence- CorreosfilesPath" sap:VirtualizedContainerService.HintSize="722,66" sap2010:WorkflowViewState.IdRef="Sequence_84">
+          <Sequence DisplayName="Sequence- CorreosfilesPath" sap:VirtualizedContainerService.HintSize="262,66" sap2010:WorkflowViewState.IdRef="Sequence_84">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign DisplayName="Assign- correos" sap:VirtualizedContainerService.HintSize="460,60" sap2010:WorkflowViewState.IdRef="Assign_21">
+            <Assign DisplayName="Assign- correos" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_21">
               <Assign.To>
                 <OutArgument x:TypeArguments="scg:List(x:String)">[out_CorreosFileNameList]</OutArgument>
               </Assign.To>
@@ -319,14 +337,14 @@
                 <InArgument x:TypeArguments="scg:List(x:String)">[new List(of String)]</InArgument>
               </Assign.Value>
             </Assign>
-            <Sequence DisplayName="Survey MC download Sequence" sap:VirtualizedContainerService.HintSize="460,536" sap2010:WorkflowViewState.IdRef="Sequence_96">
+            <Sequence DisplayName="Survey MC download Sequence" sap:VirtualizedContainerService.HintSize="262,234" sap2010:WorkflowViewState.IdRef="Sequence_96">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:RetryScope DisplayName="Retry Scope CorreosfilesPath" sap:VirtualizedContainerService.HintSize="418,353" sap2010:WorkflowViewState.IdRef="RetryScope_28" NumberOfRetries="3" RetryInterval="00:00:03">
+              <ui:RetryScope DisplayName="Retry Scope CorreosfilesPath" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="RetryScope_28" NumberOfRetries="3" RetryInterval="00:00:03">
                 <ui:RetryScope.ActivityBody>
                   <ActivityAction>
                     <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="376,179" sap2010:WorkflowViewState.IdRef="Sequence_92">
@@ -351,12 +369,12 @@
                 </ui:RetryScope.Condition>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:RetryScope>
-              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[filesDT]" DisplayName="For Each Row in filesDT" sap:VirtualizedContainerService.HintSize="418,51" sap2010:WorkflowViewState.IdRef="ForEachRow_16">
+              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[filesDT]" DisplayName="For Each Row in filesDT" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ForEachRow_16">
                 <ui:ForEachRow.Body>
                   <ActivityAction x:TypeArguments="sd:DataRow">
                     <ActivityAction.Argument>
@@ -416,7 +434,7 @@
               </ui:ForEachRow>
             </Sequence>
           </Sequence>
-          <Sequence DisplayName="Sequence- Blacklist" sap:VirtualizedContainerService.HintSize="722,66" sap2010:WorkflowViewState.IdRef="Sequence_47">
+          <Sequence DisplayName="Sequence- Blacklist" sap:VirtualizedContainerService.HintSize="262,66" sap2010:WorkflowViewState.IdRef="Sequence_47">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
