@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>939,2645</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>707,2395</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CreateBlacklistPivoteTable_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="31">
@@ -81,7 +81,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CreateBlacklistPivoteTable" sap:VirtualizedContainerService.HintSize="680,2580" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CreateBlacklistPivoteTable" sap:VirtualizedContainerService.HintSize="717,2330" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="blacklistSheetName" />
       <Variable x:TypeArguments="sd:DataTable" Name="uniqueTable" />
@@ -92,35 +92,33 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope- Blacklist" sap:VirtualizedContainerService.HintSize="638,2488" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[&quot;Data\Temp\&quot;+in_BlackListFileName]">
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope- Blacklist" sap:VirtualizedContainerService.HintSize="675,2238" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[&quot;Data\Temp\&quot;+in_BlackListFileName]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="604,2379" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="641,2129" sap2010:WorkflowViewState.IdRef="Sequence_6">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ExcelGetWorkbookSheet DisplayName="Get Workbook Sheet" sap:VirtualizedContainerService.HintSize="562,79" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheet_1" Index="0" Sheet="[blacklistSheetName]" />
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="562,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[blacklistSheetName]" />
-            <ui:ExcelReadRange Range="{x:Null}" AddHeaders="True" DataTable="[blacklistDataTable]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="562,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="[in_Config(&quot;BlacklistSheetName&quot;).ToString]" />
-            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="562,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;blacklist table rows count: &quot;+ blacklistDataTable.Rows.Count.ToString]" />
-            <ui:ForEach x:TypeArguments="sd:DataColumn" CurrentIndex="{x:Null}" DisplayName="For Each- columns" sap:VirtualizedContainerService.HintSize="562,684" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[blacklistDataTable.Columns]">
+            <ui:ExcelReadRange Range="{x:Null}" AddHeaders="True" DataTable="[blacklistDataTable]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="599,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="[in_Config(&quot;BlacklistSheetName&quot;).ToString]" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="599,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;blacklist table rows count: &quot;+ blacklistDataTable.Rows.Count.ToString]" />
+            <ui:ForEach x:TypeArguments="sd:DataColumn" CurrentIndex="{x:Null}" DisplayName="For Each- columns" sap:VirtualizedContainerService.HintSize="599,684" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[blacklistDataTable.Columns]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="sd:DataColumn">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="sd:DataColumn" Name="column" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,551" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="563,551" sap2010:WorkflowViewState.IdRef="Sequence_3">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <If Condition="[column.ColumnName.ToLower.Trim.Contains(&quot;cl_cine&quot;)]" DisplayName="If- CPS column" sap:VirtualizedContainerService.HintSize="484,459" sap2010:WorkflowViewState.IdRef="If_1">
+                    <If Condition="[column.ColumnName.ToLower.Trim.Contains(&quot;cl_cine&quot;)]" DisplayName="If- CPS column" sap:VirtualizedContainerService.HintSize="521,459" sap2010:WorkflowViewState.IdRef="If_1">
                       <If.Then>
                         <Sequence sap:VirtualizedContainerService.HintSize="376,283" sap2010:WorkflowViewState.IdRef="Sequence_2">
                           <sap:WorkflowViewStateService.ViewState>
@@ -144,7 +142,7 @@
                 </ActivityAction>
               </ui:ForEach.Body>
             </ui:ForEach>
-            <Assign DisplayName="Get unique Values" sap:VirtualizedContainerService.HintSize="562,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign DisplayName="Get unique Values" sap:VirtualizedContainerService.HintSize="599,60" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
                 <OutArgument x:TypeArguments="sd:DataTable">[uniqueTable]</OutArgument>
               </Assign.To>
@@ -152,7 +150,7 @@
                 <InArgument x:TypeArguments="sd:DataTable">[blacklistDataTable.DefaultView.ToTable(True,out_CpsColumnName)]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="562,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign sap:VirtualizedContainerService.HintSize="599,60" sap2010:WorkflowViewState.IdRef="Assign_3">
               <Assign.To>
                 <OutArgument x:TypeArguments="sd:DataTable">[out_PivotTable]</OutArgument>
               </Assign.To>
@@ -160,8 +158,8 @@
                 <InArgument x:TypeArguments="sd:DataTable">[uniqueTable.Clone]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Cuenta de CPS" DataTable="[out_PivotTable]" DisplayName="Add Data Column- Cuenta de CPS" sap:VirtualizedContainerService.HintSize="562,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" />
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[uniqueTable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="562,694" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Cuenta de CPS" DataTable="[out_PivotTable]" DisplayName="Add Data Column- Cuenta de CPS" sap:VirtualizedContainerService.HintSize="599,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" />
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[uniqueTable]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="599,694" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
               <ui:ForEachRow.Body>
                 <ActivityAction x:TypeArguments="sd:DataRow">
                   <ActivityAction.Argument>
@@ -204,7 +202,7 @@
                         </scg:List>
                       </ui:FilterDataTable.SelectColumns>
                     </ui:FilterDataTable>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[specialValueTable.Rows.Count]" />
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;no of data for:&quot;+ specialValueTable.Rows.Count.ToString]" />
                     <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{CurrentRow( out_CpsColumnName), specialValueTable.Rows.Count}]" DataTable="[out_PivotTable]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
                   </Sequence>
                 </ActivityAction>
@@ -216,7 +214,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:ForEachRow>
-            <ui:ExcelWriteRange AddHeaders="True" DataTable="[out_PivotTable]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="562,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="pivote table" StartingCell="A1" />
+            <ui:ExcelWriteRange AddHeaders="True" DataTable="[out_PivotTable]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="599,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="pivote table" StartingCell="A1" />
           </Sequence>
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
