@@ -140,15 +140,9 @@
                     </sap:WorkflowViewStateService.ViewState>
                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke InitAllSettings workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\InitAllSettings.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_ConfigFile">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="configFile" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="s:String[]" x:Key="in_ConfigSheets">
-                          <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="{}{&quot;Settings&quot;,&quot;Constants&quot;}" />
-                        </InArgument>
-                        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Config">
-                          <mva:VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="config" />
-                        </OutArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_ConfigFile">[configFile]</InArgument>
+                        <InArgument x:TypeArguments="s:String[]" x:Key="in_ConfigSheets">[{"Settings","Constants"}]</InArgument>
+                        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Config">[config]</OutArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -165,7 +159,7 @@
                             <av:PointCollection x:Key="ConnectorLocation">300,355.5 300,404.5</av:PointCollection>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke DownloadFTPFileToLocal workflow" sap:VirtualizedContainerService.HintSize="354,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="FTPAutomation\DownloadFTPFileToLocal.xaml">
+                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke DownloadFTPFileToLocal workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="FTPAutomation\DownloadFTPFileToLocal.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
                             <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[config]</InArgument>
                             <OutArgument x:TypeArguments="x:String" x:Key="out_BlackListFileName">[blacklistFileName]</OutArgument>
@@ -210,7 +204,7 @@
                                     <av:PointCollection x:Key="ConnectorLocation">300,555.5 300,604.5</av:PointCollection>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each- correos" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[correosFileNameList]">
+                                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each- correos" sap:VirtualizedContainerService.HintSize="412,338" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[correosFileNameList]">
                                   <ui:ForEach.Body>
                                     <ActivityAction x:TypeArguments="x:String">
                                       <ActivityAction.Argument>
@@ -224,9 +218,18 @@
                                         </sap:WorkflowViewStateService.ViewState>
                                         <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CorreosManipulate workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="CorreosManipulate.xaml">
                                           <ui:InvokeWorkflowFile.Arguments>
-                                            <InArgument x:TypeArguments="x:String" x:Key="in_CorreosFileName">[correosFileName]</InArgument>
-                                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_PivoteTable">[pivotTable]</InArgument>
-                                            <InArgument x:TypeArguments="x:String" x:Key="in_cpsColumnName">[CPSColumnName]</InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_CorreosFileName">
+                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="correosFileName" />
+                                            </InArgument>
+                                            <InArgument x:TypeArguments="sd:DataTable" x:Key="in_PivoteTable">
+                                              <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="pivotTable" />
+                                            </InArgument>
+                                            <InArgument x:TypeArguments="x:String" x:Key="in_cpsColumnName">
+                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CPSColumnName" />
+                                            </InArgument>
+                                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                                              <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="config" />
+                                            </InArgument>
                                           </ui:InvokeWorkflowFile.Arguments>
                                         </ui:InvokeWorkflowFile>
                                       </Sequence>
@@ -273,7 +276,7 @@
                                             <av:Size x:Key="ShapeSize">200,51</av:Size>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke FTPFileTransfer workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="FTPAutomation\FTPFileTransfer.xaml">
+                                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke FTPFileTransfer workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="FTPAutomation\FTPFileTransfer.xaml">
                                           <ui:InvokeWorkflowFile.Arguments>
                                             <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[config]</InArgument>
                                             <InArgument x:TypeArguments="x:String" x:Key="in_BlackListFileName">[blacklistFileName]</InArgument>
